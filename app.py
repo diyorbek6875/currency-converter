@@ -6,6 +6,7 @@ usd = 11380.7 # 1 USD = 11380.7 UZS
 
 @app.route('/api/to-usd', methods=['GET'])
 def to_usd():
+
     """
     Convert to USD
 
@@ -24,7 +25,16 @@ def to_usd():
                 "convertedCurrency": "USD"
             }
     """
-    pass
+    data=request.values
+    x=   {
+                "amount": data['amout'],
+                "currency": "UZS",
+                "converted": (int(data['amout']))/11380.7,
+                "convertedCurrency": "USD"
+            }
+    
+    return x
+    
 
 @app.route('/api/to-uzs', methods=['GET'])
 def to_uzs():
